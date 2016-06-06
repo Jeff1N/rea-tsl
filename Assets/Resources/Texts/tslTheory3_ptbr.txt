@@ -1,0 +1,29 @@
+﻿As operações realizadas por TSL (copiar o
+valor antigo de uma variável e escrever nela
+o valor '1') e o fato dela ser uma instrução
+atômica (ou seja, o processo executando TSL
+não será interrompido antes de terminar a
+execução) podem ser aproveitados como no código
+acima para criar uma "variável de trava".
+Um processo executando esse código irá guardar
+o valor antigo de LOCK (considere que o valor
+inicial de LOCK é '0') em um registrador r0 e
+escrever '1' na variável. 
+
+Se, ao executar TSL, LOCK valia '0' (ou seja,
+estava "destravada"), então o processo poderá
+continuar a executar a instrução que vem após
+JNE Enter_Region.
+
+
+Se LOCK valia '1' quando TSL foi executada (ou
+seja, estava "travada"), então o processo irá
+entrar em loop dentro de "Enter_Region" até que
+um processo livre (muito provavelmente aquele
+que travou LOCK) escreva '0' em LOCK.
+
+Apenas explicando assim pode não ficar muito
+claro, então eu recomendo dar uma olhada no
+simulador, que mostra quatro processos competindo
+pela região crítica usando este mesmo código
+apresentado.

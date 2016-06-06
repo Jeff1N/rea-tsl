@@ -1,0 +1,22 @@
+﻿TSL (Test and Set Lock)
+
+TSL é uma instrução assembly atômica que copia
+o valor de uma variável em um registrador e
+guarda nessa variável o valor '1'
+
+A sintaxe da instrução TSL é "TSL RX, LOCK"
+
+Sendo 'RX' um registrador qualquer que irá
+receber o valor antigo de 'LOCK', esta a
+variável que terá o valor 1 após a execução
+de TSL.
+Por ser atômica, a instrução é implementada de
+forma a garantir que tanto a cópia do valor
+antigo de 'LOCK' para 'RX', quanto a atualização
+de 'LOCK' para 1 aconteça antes que o processo
+a executando possa ser interrompido.
+
+A seguir confira o funcionamento da instrução TSL
+Clique em "Executar" para executar uma vez TSL 
+sobre REGISTER e LOCK. Se quiser você pode
+editar cada valor manualmente.

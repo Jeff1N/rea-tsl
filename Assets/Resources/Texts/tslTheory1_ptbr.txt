@@ -1,0 +1,4 @@
+﻿Essa instrução é de grande ajuda para
+coordenar a execução de vários processos e
+garantir a exclusão mútua caso estes processos
+entrem em suas respectívas regiões críticas.

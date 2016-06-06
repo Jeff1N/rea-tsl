@@ -1,0 +1,39 @@
+﻿A critical region is a shared resource between
+processes that, when accessed "at the same
+time", can't have its consistency ensured.
+
+
+
+Generally, the problem of accessing the critical
+region happens when two or more process sharing
+a memory region read a variable to a local register,
+update this register value and then write back to the
+variable from this shared region.
+
+Consider, for example, a variable counting how
+many process were executed. Each process
+starts by reading this variable current value and,
+just before finishing execution, increases this
+value by '1' and write it back to memory.
+
+This shared variable final value can differ from
+one execution to another unless there's some
+assurance that, after a process read the variable,
+another one won't read it too until the first one
+is done updating it.
+
+A case similar to that is shown in the simulator,
+with the instructions accessing the critical region
+marked in red. If you wish to better understand
+the problem in having many process accessing the
+critical region at once, take a look at the 
+"Everyone in the critical region" special case found
+at the upper right menu.
+Clicking "Play" makes each process take turns to
+read a variable to a register and increase this
+register, and then again each process take turns
+writing the register's value into the variable.
+
+This variable should, at the end, contain the
+number of process, which is '4', but will instead
+contain '1' no matter how many process are there.
