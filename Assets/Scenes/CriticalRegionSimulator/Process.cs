@@ -453,6 +453,9 @@ public class Process : Script {
 
                     Simulator.sim.GetComponent<AudioSource>().clip = Simulator.sim.right;
                     Simulator.sim.doorAnim.Play();
+
+                    GetComponent<AudioSource>().clip = toiletSound;
+                    if (playSound) GetComponent<AudioSource>().PlayDelayed(1);
                 }
                 if (playSound) Simulator.sim.GetComponent<AudioSource>().Play();
                 break;
@@ -479,12 +482,7 @@ public class Process : Script {
                 poop.gameObject.SetActive(true);
 
                 GetComponent<Renderer>().material.color = Color.green;
-
-                Simulator.sim.GetComponent<AudioSource>().clip = Simulator.sim.fart;
-                if (playSound) Simulator.sim.GetComponent<AudioSource>().Play();
-
-                GetComponent<AudioSource>().clip = toiletSound;
-                if (playSound) GetComponent<AudioSource>().PlayDelayed(1);
+                
                 break;
 
             case 8:     // store toilet, r1

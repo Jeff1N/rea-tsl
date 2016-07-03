@@ -18,5 +18,5 @@ loop inside "Enter_Region" until LOCK is set to
 
 You can probably better understand how this works
 by looking at the simulator present in this program,
-which shows four processes competing for the critical
-region using the code shown here.
+which shows four processes competing for the
+critical region using the code shown here.

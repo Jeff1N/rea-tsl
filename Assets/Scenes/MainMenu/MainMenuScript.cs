@@ -20,10 +20,15 @@ public class MainMenuScript : Script {
             case 1:
                 if (lang == 0) {
                     AddDecisionButton("A Instrução TSL", 10);
-                    AddDecisionButton("Simulador de exclusão mútua com TSL", 21);
-                }else if (lang == 1) {
+                    AddDecisionButton("Simulador de exclusão mútua com TSL", 11);
+                    AddDecisionButton("Créditos", 12);
+                    AddDecisionButton("Mudar a linguagem", 13);
+                }
+                else if (lang == 1) {
                     AddDecisionButton("The TSL instruction", 10);
-                    AddDecisionButton("Mutual exclusion simulator using TSL", 21);
+                    AddDecisionButton("Mutual exclusion simulator using TSL", 11);
+                    AddDecisionButton("Credits", 12);
+                    AddDecisionButton("Change language", 13);
                 }
 
                 StartDecision();
@@ -33,8 +38,15 @@ public class MainMenuScript : Script {
                 SceneManager.LoadScene("TslTheory");
                 break;
             
-            case 21:
+            case 11:
                 SceneManager.LoadScene("CriticalRegionSimulator");
+                break;
+            case 12:
+                if (lang == 0) SceneManager.LoadScene("Credits_ptbr");
+                else if (lang == 1) SceneManager.LoadScene("Credits_en");
+                break;
+            case 13:
+                SceneManager.LoadScene("LangSelect");
                 break;
         }
     }

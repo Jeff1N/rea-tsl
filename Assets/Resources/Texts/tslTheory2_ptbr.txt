@@ -1,7 +1,7 @@
 ﻿Uma região crítica é um recurso compartilhado 
-entre processos que, caso seja acesado "ao mesmo
-tempo" por vários processos, não há como garantir
-sua consistência de dados.
+entre processos que, caso seja acessado "ao
+mesmo tempo" por vários processos, não há
+como garantir sua consistência de dados.
 
 
 Em geral, o problema do acesso à região crítica
@@ -30,8 +30,9 @@ processos na região crítica pode ser
 problemático, selecione o caso especial 
 "Todos na região crítica".
 Ao clicar em "Play", cada processo vai ler uma
-variável num registrador e incrementar o valor
-deste, e depois cada um vai guardar o valor do
-registrador na memória. A variável, que deveria
-calcular a soma de processos que passou pela
-região crítica, ao invés de '4', irá valer '1'.
+variável 'TOILET' num registrador e incrementar
+o valor deste, e depois cada um vai guardar o
+valor do registrador de volta na variável
+TOILET. A variável, que deveria calcular a soma
+de processos que passou pela região crítica,
+ao invés de '4', irá valer '1'.

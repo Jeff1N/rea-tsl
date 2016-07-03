@@ -69,12 +69,12 @@ public class criticalRegionScript : Script {
                 
             case 10:
                 if (lang == 0) {
-                    AddDecisionButton(1, "Todos na região crítica", 2);
-                    AddDecisionButton(2, "Todos executando TSL", 2);
+                    AddDecisionButton(1, "O que TSL evita: Todos na região crítica", 2);
+                    AddDecisionButton(2, "O que queremos vizualizar: Todos executando TSL", 2);
                     AddDecisionButton("Voltar", 1);
                 }else if (lang == 1) {
-                    AddDecisionButton(1, "Every process in the critical region", 2);
-                    AddDecisionButton(2, "Every process running TSL", 2);
+                    AddDecisionButton(1, "What TSL avoids: Every process in the critical region", 2);
+                    AddDecisionButton(2, "What we must understand: Every process running TSL", 2);
                     AddDecisionButton("Back", 1);
                 }
                 StartDecision();
@@ -97,8 +97,8 @@ public class criticalRegionScript : Script {
                     else
                         Simulator.sim.codeLine[Simulator.sim.process[Simulator.sim.currentProcess].state].color = Color.white;
                 }
-                Simulator.sim.processPanel[Simulator.sim.currentProcess].color = Color.white;
-                
+                Simulator.sim.processPanel[Simulator.sim.currentProcess].color = new Color32(200, 200, 200, 255);
+
                 Simulator.sim.codeLine[0].color = new Color(1f, 1f, 0f);
                 Simulator.sim.processPanel[0].color = new Color(1f, 1f, 0.5f);
 
@@ -121,6 +121,7 @@ public class criticalRegionScript : Script {
                 //Resetting InputFields 
                 Simulator.sim.processInput.text = "0";
                 Simulator.sim.lockInput.text = "0";
+                Simulator.sim.doorText.text = "Lock\n0";
                 Simulator.sim.toiletInput.text = "0";
 
                 for (int i = 0; i < 4; i++) {
@@ -141,19 +142,25 @@ public class criticalRegionScript : Script {
                 Simulator.sim.PauseSim();
 
                 //Repaint
-                if (Simulator.sim.process[Simulator.sim.currentProcess].state < 15)
-                    Simulator.sim.codeLine[Simulator.sim.process[Simulator.sim.currentProcess].state].color = Color.white;
-                Simulator.sim.processPanel[Simulator.sim.currentProcess].color = Color.white;
+                if (Simulator.sim.process[Simulator.sim.currentProcess].state < 15) {
+                    if (Simulator.sim.process[Simulator.sim.currentProcess].state >= 6 
+                        && Simulator.sim.process[Simulator.sim.currentProcess].state <= 8)
 
-                Simulator.sim.codeLine[6].color = new Color(1f, 1f, 0f);
+                        Simulator.sim.codeLine[Simulator.sim.process[Simulator.sim.currentProcess].state].color = new Color(0.625f, 0.125f, 0.125f);
+                    else
+                        Simulator.sim.codeLine[Simulator.sim.process[Simulator.sim.currentProcess].state].color = Color.white;
+                }
+                Simulator.sim.processPanel[Simulator.sim.currentProcess].color = new Color32(200, 200, 200, 255);
+
+                Simulator.sim.codeLine[6].color = new Color(1f, 0.5f, 0.5f);
                 Simulator.sim.processPanel[0].color = new Color(1f, 1f, 0.5f);
 
-                Simulator.sim.toiletDoor.GetComponentInChildren<Renderer>().material.color = new Color(0.625f, 0.125f, 0.125f);
+                Simulator.sim.toiletDoor.GetComponentInChildren<Renderer>().material.color = new Color(0.625f, 0.125f, 0.125f, 0.5f);
 
                 //Resetting Simulator and Process Variables
                 Simulator.sim.opsCount = 0;
                 Simulator.sim.currentProcess = 0;
-                Simulator.sim.lockVar = 0;
+                Simulator.sim.lockVar = 1;
                 Simulator.sim.toilet = 0;
                 Simulator.sim.OpsPerProcess = 2;
 
@@ -167,7 +174,8 @@ public class criticalRegionScript : Script {
 
                 //Resetting InputFields 
                 Simulator.sim.processInput.text = "0";
-                Simulator.sim.lockInput.text = "0";
+                Simulator.sim.lockInput.text = "1";
+                Simulator.sim.doorText.text = "Lock\n1";
                 Simulator.sim.toiletInput.text = "0";
                 Simulator.sim.opsInput.text = "2";
 
@@ -189,9 +197,15 @@ public class criticalRegionScript : Script {
                 Simulator.sim.PauseSim();
 
                 //Repaint
-                if (Simulator.sim.process[Simulator.sim.currentProcess].state < 15)
-                    Simulator.sim.codeLine[Simulator.sim.process[Simulator.sim.currentProcess].state].color = Color.white;
-                Simulator.sim.processPanel[Simulator.sim.currentProcess].color = Color.white;
+                if (Simulator.sim.process[Simulator.sim.currentProcess].state < 15) {
+                    if (Simulator.sim.process[Simulator.sim.currentProcess].state >= 6
+                        && Simulator.sim.process[Simulator.sim.currentProcess].state <= 8)
+
+                        Simulator.sim.codeLine[Simulator.sim.process[Simulator.sim.currentProcess].state].color = new Color(0.625f, 0.125f, 0.125f);
+                    else
+                        Simulator.sim.codeLine[Simulator.sim.process[Simulator.sim.currentProcess].state].color = Color.white;
+                }
+                Simulator.sim.processPanel[Simulator.sim.currentProcess].color = new Color32(200, 200, 200, 255);
 
                 Simulator.sim.codeLine[3].color = new Color(1f, 1f, 0f);
                 Simulator.sim.processPanel[0].color = new Color(1f, 1f, 0.5f);

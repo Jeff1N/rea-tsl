@@ -47,7 +47,7 @@ public class ExplainScript : Script {
                 else if (lang == 1)
                     StartText("This simulator shows the behaviour of 4\n" +
                               "processes competing to enter the critical\n" +
-                              "region. The proccesses, numbererd from 0 to\n" +
+                              "region. The processes, numbererd from 0 to\n" +
                               "3, are representendo by the characters", 1);
                 break;
 
@@ -80,8 +80,9 @@ public class ExplainScript : Script {
                               "próxima instrução a ser realizada pelo\n" +
                               "processo atualmente em execução. A\n" +
                               "tabela do processo em execução também é\n" +
-                              "realçada. As 3 linhas em vermelho representam\n" +
-                              "a execução da região crítica", 3);
+                              "realçada. As 3 linhas em vermelho\n" +
+                              "representam a execução da região\n" +
+                              "crítica", 3);
                 else if (lang == 1)                    
                     StartText("The code executed by the processes is\n" +
                               "shown in the lower left corner, with the\n" +
@@ -112,12 +113,12 @@ public class ExplainScript : Script {
                               "A tabela do meio mostra, respectivamente,\n" + 
                               "o processo atual, o número de instruções\n" +
                               "executadas por processo na execução\n" +
-                              "automática e a duração em segundos do tick\n" +
-                              "de clock na execução automática.\n\n\n\n" +
+                              "automática e a duração em segundos do\n" +
+                              "tick de clock na execução automática.\n\n\n\n" +
 
                               "A tabela de baixo mostra os valores atuais\n" +
-                              "das variáveis compartilhadas LOCK e TOILET\n\n\n"
-                              , 4);
+                              "das variáveis compartilhadas LOCK e\n" +
+                              "TOILET.\n\n", 4);
                 else if (lang == 1)
                     StartText("The upper table of the three stacked\n" +
                               "tables on the lower right corner shows\n" +
@@ -148,11 +149,43 @@ public class ExplainScript : Script {
                 if (lang == 0)
                     StartText("A tabela mais à direita explica o que\n" +
                               "cada registrador e variável faz no código\n" +
-                              "executado, para facilitar seu entendimento\n", -1);
+                              "executado, para facilitar seu entendimento\n", 5);
                 else if (lang == 1)
                     StartText("The right most table explains what each\n" +
                               "register and variable do in the executed code\n" +
-                              "to make it easier to understand.\n", -1);
+                              "to make it easier to understand.\n", 5);
+                break;
+
+            case 5:
+                explainArrow.gameObject.SetActive(false);
+
+                if (lang == 0)
+                    StartText("No menu no canto superior direito é possível\n" +
+                              "encontrar os 'casos especiais', que colocam\n" +
+                              "o simulador em situações específicas para\n" +
+                              "melhorar o entendimento da teoria. Um desses\n" +
+                              "casos é o 'Todos na região crítica', que\n" +
+                              "mostra o que poderia dar errado se uma função\n" +
+                              "como TSL não fosse usada para coordenar o\n" +
+                              "acesso à região crítica.\n" +
+                              "O outro caso especial coloca todos os processos\n" +
+                              "na iminência de executar TSL para entrar na\n" +
+                              "região crítica, já que esse é justamente o\n" +
+                              "ponto de maior interesse deste REA.", -1);
+                else if (lang == 1)
+                    StartText("In the upper right menu there's the 'special\n" +
+                              "cases' submenu, where it's possible to set the\n" +
+                              "simulator to specific configurations to better\n" +
+                              "understando the theory. One of these cases is\n" +
+                              "the 'Every process in the critical region',\n" +
+                              "which shows what could go wrong if an\n" +
+                              "instruction like TSL wasn't used to coordinate\n" +
+                              "access to the critical region\n" +
+                              "The other special case, 'Every process running\n" +
+                              "TSL', sets the processes to just before they\n" +
+                              "execute TSL to try to enter the critial region,\n" +
+                              "which is the most important point of the\n" +
+                              "simulation.", -1);
                 break;
         }
     }

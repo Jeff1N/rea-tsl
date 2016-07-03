@@ -30,10 +30,10 @@ critical region at once, take a look at the
 "Everyone in the critical region" special case found
 at the upper right menu.
 Clicking "Play" makes each process take turns to
-read a variable to a register and increase this
-register, and then again each process take turns
-writing the register's value into the variable.
-
+read the 'TOILET' variable to a register and
+increase this register's value by one, and then
+again each process take turns writing the
+register's value into the variable.
 This variable should, at the end, contain the
 number of process, which is '4', but will instead
 contain '1' no matter how many process are there.

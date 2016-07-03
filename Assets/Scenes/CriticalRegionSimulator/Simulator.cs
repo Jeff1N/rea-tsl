@@ -43,7 +43,6 @@ public class Simulator : MonoBehaviour {
     public Transform outsideToilet2;
     public Transform insideToilet;
 
-    public AudioClip fart;
     public AudioClip flush;
     public AudioClip right;
     public AudioClip wrong;
@@ -85,14 +84,17 @@ public class Simulator : MonoBehaviour {
                 if (opsCount >= OpsPerProcess) {
                     opsCount = 0;
 
+                    //Unpaint the previous code line
                     if (process[currentProcess].state < 15) {
                         if (process[currentProcess].state >= 6 && process[currentProcess].state <= 8)
                             codeLine[process[currentProcess].state].color = new Color(0.625f, 0.125f, 0.125f);
                         else
                             codeLine[process[currentProcess].state].color = Color.white;
                     }
-                    processPanel[currentProcess].color = Color.white;
+                    //Unpaint the previous process panel
+                    processPanel[currentProcess].color = new Color32(200, 200, 200, 255);
 
+                    //Try to find a process that has yet to finish simulation
                     int count = 0;
                     do {
                         currentProcess++;
@@ -105,12 +107,14 @@ public class Simulator : MonoBehaviour {
 
                     processInput.text = currentProcess.ToString();
 
+                    //Paint the new current code line
                     if (process[currentProcess].state < 15) {
                         if (process[currentProcess].state >= 6 && process[currentProcess].state <= 8)
                             codeLine[process[currentProcess].state].color = new Color(1f, 0.5f, 0.5f);
                         else
                             codeLine[process[currentProcess].state].color = new Color(1f, 1f, 0f);
                     }
+                    //Paint the new current process panel
                     processPanel[currentProcess].color = new Color(1f, 1f, 0.5f);
                 }
             }
@@ -202,7 +206,7 @@ public class Simulator : MonoBehaviour {
                 else
                     codeLine[process[currentProcess].state].color = Color.white;
             }
-            processPanel[currentProcess].color = Color.white;
+            processPanel[currentProcess].color = new Color32(200, 200, 200, 255);
 
             currentProcess = int.Parse(processInput.text);
             if (currentProcess < 0) currentProcess = 0;
@@ -224,7 +228,7 @@ public class Simulator : MonoBehaviour {
                 else
                     codeLine[process[currentProcess].state].color = Color.white;
             }
-            processPanel[currentProcess].color = Color.white;
+            processPanel[currentProcess].color = new Color32(200, 200, 200, 255);
 
             currentProcess = 0;
 
@@ -293,8 +297,8 @@ public class Simulator : MonoBehaviour {
                     codeLine[process[currentProcess].state].color = new Color(0.625f, 0.125f, 0.125f);
                 else codeLine[process[currentProcess].state].color = Color.white;
             }
-            processPanel[currentProcess].color = Color.white;
-                        
+            processPanel[currentProcess].color = new Color32(200, 200, 200, 255);
+
             for (int i = 0; i < 4; i++) {
                 process[i].nextPos = state.nextPos[i];
 
